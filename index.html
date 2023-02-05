@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="styles.css" rel="stylesheet">
+ 
+    <template id="news-card-template">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </template> 
+</head>
+<body>
+    <h1>My News Page</h1>
+    <div id="news-list">
+        <!-- Add list of new cards-->
+    </div>    
+
+    <form></form>
+
+    <script>
+        let newsData=[
+            { id: 1, title: 'News1', content:"bla"},
+            { id: 2, title: 'News2', content:"ble"},
+            { id: 3, title: 'News3', content:"blu"}
+        ];
+
+        //function to handle form
+        //hijack form from submitting
+        //get values for title and content
+        //get length of newsData Array, to increment id
+        //
+
+        
+
+        // function to iterate over news and add template card - Slide 56 example
+        function getNews() {
+            return newsData;
+        }    
+        
+        
+        function addCards () {
+                getNews().forEach((news) => {
+                    const template = document.getElementById("news-card-template").content.cloneNode(true);
+                    template.querySelector(".card-title").innerText = news.title;
+                    template.querySelector(".card-text").innerText = news.content;
+                    document.querySelector("#news-list").appendChild(template);
+                
+                });
+            }
+        //every 5s setInterval, function to clear card list and call generate cards
+            if ( "content" in document.createElement("template")) {
+                addCards();
+            }
+
+            setInterval(function() {
+                document.querySelector("#news-list").innerHTML = "";
+                setTimeout(addCards, 2000)
+            }, 5000);
+    </script>
+</body>
+
+
+<!-- Add template for card - Slide 33 & 34-->
+
+
+</html>
